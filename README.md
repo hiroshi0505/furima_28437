@@ -2,11 +2,13 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
+| Column     | Type   | Options     |
+| ---------- | ------ | ----------- |
+| first name | string | null: false |
+| last name  | string | null: false |
+| furigana   | string | null: false |
+| email      | string | null: false |
+| password   | string | null: false |
 
 ### Association
 - has_many :items
@@ -16,24 +18,14 @@
 
 ## address テーブル
 
-| Column       | Type    | Options     |
-| -------------| ------- | ----------- |
-| Postal code  | integer | null: false |
-| Prefectures  | string  | null: false |
-| city         | integer | null: false |
-| address      | string  | null: false |
-| phone number | integer | null: false |
-
-### Association
-- belongs_to :users
-
-## credit card テーブル
-
-| Column          | Type    | Options     |
-| --------------- | ------- | ----------- |
-| number          | integer | null: false |
-| expiration date | integer | null: false |
-| cvc             | integer | null: false |
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| Postal code   | integer | null: false |
+| Prefectures   | string  | null: false |
+| city          | string  | null: false |
+| address       | string  | null: false |
+| building name | string  | null: false |
+| phone number  | string  | null: false |
 
 ### Association
 - belongs_to :users
@@ -42,34 +34,24 @@
 
 | Column          | Type    | Options     |
 | --------------- | ------  | ----------- |
-| name            | string  | null: false |
+| item name       | string  | null: false |
 | price           | integer | null: false |
 | image           | img     | null: false |
 | comment         | string  | null: false |
 | Exhibitor       | string  | null: false |
-| Category        | string  | null: false |
-| Status          | string  | null: false |
-| Delivery fee    | string  | null: false |
-| Shipping origin | string  | null: false |
-| Date of shipment| string  | null: false |
 
 ### Association
 - belongs_to :users
 
-## sold items テーブル
+## transaction テーブル
 
 | Column          | Type    | Options     |
 | --------------- | ------  | ----------- |
-| name            | string  | null: false |
+| item name       | string  | null: false |
 | price           | integer | null: false |
 | image           | img     | null: false |
 | comment         | string  | null: false |
 | Exhibitor       | string  | null: false |
-| Category        | string  | null: false |
-| Status          | string  | null: false |
-| Delivery fee    | string  | null: false |
-| Shipping origin | string  | null: false |
-| Date of shipment| string  | null: false |
 
 ### Association
 - belongs_to :users
