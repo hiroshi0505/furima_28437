@@ -15,8 +15,35 @@
 
 ### Association
 - has_many :items
-- has_many :item_purchases
-- belongs_to :address
+
+## items テーブル
+
+| Column           | Type    | Options     |
+| ---------------  | ------  | ----------- |
+| item_name        | string  | null: false |
+| explanation      | string  | null: false |
+| category_id      | integer | null: false |
+| status_id        | integer | null: false |
+| delivery_fee_id  | integer | null: false |
+| region_id        | integer | null: false |
+| delivery_date_id | integer | null: false |
+| price            | integer | null: false |
+| user_id          | integer | null: false |
+
+### Association
+- belongs_to :users
+- has_one :item_purchases
+
+## item_purchases テーブル
+
+| Column    | Type    | Options     |
+| --------- | ------  | ----------- |
+| item_id   | integer | null: false |
+| user_id   | integer | null: false |
+
+### Association
+- belongs_to :items
+- has_one :address
 
 ## address テーブル
 
@@ -25,35 +52,10 @@
 | postal_code   | string  | null: false |
 | region_id     | integer | null: false |
 | city          | string  | null: false |
-| address       | string  | null: false |
+| street_number | string  | null: false |
 | building_name | string  |             |
 | phone_number  | string  | null: false |
+| item_id       | integer | null: false |
 
 ### Association
-- belongs_to :users
-
-## items テーブル
-
-| Column              | Type    | Options     |
-| ---------------     | ------  | ----------- |
-| image               | img     | null: false |
-| item_name           | string  | null: false |
-| explanation         | string  | null: false |
-| category_id         | integer | null: false |
-| status_id           | integer | null: false |
-| delivery_fee_id     | integer | null: false |
-| shipping_origin_id  | integer | null: false |
-| date_of_shipment_id | integer | null: false |
-| price               | integer | null: false |
-
-### Association
-- belongs_to :users
-
-## item_purchases テーブル
-
-| Column    | Type    | Options     |
-| --------- | ------  | ----------- |
-| item_id   | integer | null: false |
-
-### Association
-- belongs_to :users
+- belongs_to :item_purchases
