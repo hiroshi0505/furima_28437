@@ -21,7 +21,7 @@
 | Column           | Type    | Options     |
 | ---------------  | ------  | ----------- |
 | item_name        | string  | null: false |
-| text             | string  | null: false |
+| explanation      | text    | null: false |
 | category_id      | integer | null: false |
 | status_id        | integer | null: false |
 | delivery_fee_id  | integer | null: false |
