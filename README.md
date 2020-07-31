@@ -1,24 +1,64 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column         | Type   | Options     |
+| ----------     | ------ | ----------- |
+| nickname       | string | null: false |
+| first_name     | string | null: false |
+| last_name      | string | null: false |
+| first_furigana | string | null: false |
+| last_furigana  | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| birthday       | date   | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :item_purchases
 
-* System dependencies
+## items テーブル
 
-* Configuration
+| Column           | Type    | Options     |
+| ---------------  | ------  | ----------- |
+| name             | string  | null: false |
+| explanation      | text    | null: false |
+| category_id      | integer | null: false |
+| status_id        | integer | null: false |
+| delivery_fee_id  | integer | null: false |
+| region_id        | integer | null: false |
+| delivery_date_id | integer | null: false |
+| price            | integer | null: false |
+| user_id          | integer | null: false |
+| image            | string  | null: false |
 
-* Database creation
+### Association
+- belongs_to :users
+- has_one :item_purchases
+- has_one :address
 
-* Database initialization
+## item_purchases テーブル
 
-* How to run the test suite
+| Column    | Type    | Options     |
+| --------- | ------  | ----------- |
+| item_id   | integer | null: false |
+| user_id   | integer | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :users
+- belongs_to :items
 
-* Deployment instructions
+## address テーブル
 
-* ...
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| postal_code   | string  | null: false |
+| region_id     | integer | null: false |
+| city          | string  | null: false |
+| street_number | string  | null: false |
+| building_name | string  |             |
+| phone_number  | string  | null: false |
+| item_id       | integer | null: false |
+
+### Association
+- belongs_to :items
