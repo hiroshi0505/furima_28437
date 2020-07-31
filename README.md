@@ -15,12 +15,13 @@
 
 ### Association
 - has_many :items
+- has_many :item_purchases
 
 ## items テーブル
 
 | Column           | Type    | Options     |
 | ---------------  | ------  | ----------- |
-| item_name        | string  | null: false |
+| name             | string  | null: false |
 | explanation      | text    | null: false |
 | category_id      | integer | null: false |
 | status_id        | integer | null: false |
@@ -34,6 +35,7 @@
 ### Association
 - belongs_to :users
 - has_one :item_purchases
+- has_one :address
 
 ## item_purchases テーブル
 
@@ -43,8 +45,8 @@
 | user_id   | integer | null: false |
 
 ### Association
+- belongs_to :users
 - belongs_to :items
-- has_one :address
 
 ## address テーブル
 
@@ -59,4 +61,4 @@
 | item_id       | integer | null: false |
 
 ### Association
-- belongs_to :item_purchases
+- belongs_to :items
