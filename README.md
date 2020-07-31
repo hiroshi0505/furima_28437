@@ -21,7 +21,7 @@
 | Column           | Type    | Options     |
 | ---------------  | ------  | ----------- |
 | item_name        | string  | null: false |
-| explanation      | string  | null: false |
+| text             | string  | null: false |
 | category_id      | integer | null: false |
 | status_id        | integer | null: false |
 | delivery_fee_id  | integer | null: false |
@@ -29,6 +29,7 @@
 | delivery_date_id | integer | null: false |
 | price            | integer | null: false |
 | user_id          | integer | null: false |
+| image            | string  | null: false |
 
 ### Association
 - belongs_to :users
