@@ -94,14 +94,11 @@
     </form>
   </div>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <%= link_to '＜ 前の商品', '#' class="change-item-btn"%>
+    <%= link_to '後ろの商品 ＞', '#' class="change-item-btn"%>
   </div>
-  <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
+  <%# <a href="#" class='another-item'><%= "商品のカテゴリー名"をもっと見る</a> %> %>
+  <%= class='another-item' link_to '<%= "商品のカテゴリー名" %>をもっと見る', '#' %>
 </div>
 
 <%= render "shared/footer" %>

@@ -7,9 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
     <div class="img-upload">
@@ -64,7 +62,7 @@
     <div class="items-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
-        <a class="question" href="#">?</a>
+        <%= class="question" link_to '','#' %>
       </div>
       <div class="form">
         <div class="weight-bold-text">
@@ -90,7 +88,8 @@
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
+        <%= class="question" link_to '?','#' %>
+
       </div>
       <div>
         <div class="price-content">
@@ -120,18 +119,18 @@
     <%# 注意書き %>
     <div class="caution">
       <p class="sentence">
-        <a href="#">禁止されている出品、</a>
-        <a href="#">行為</a>
+        <%= link_to '禁止されている出品、', '#' %>
+        <%= link_to '行為', '#' %>
         を必ずご確認ください。
       </p>
       <p class="sentence">
         またブランド品でシリアルナンバー等がある場合はご記載ください。
-        <a href="#">偽ブランドの販売</a>
+        <%= link_to '偽ブランドの販売', '#' %>
         は犯罪であり処罰される可能性があります。
       </p>
       <p class="sentence">
         また、出品をもちまして
-        <a href="#">加盟店規約</a>
+        <%= link_to '加盟店規約', '#' %>
         に同意したことになります。
       </p>
     </div>
@@ -147,9 +146,9 @@
 
   <footer class="items-sell-footer">
     <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">フリマ利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
+      <li><%= link_to 'プライバシーポリシー', '#' %></li>
+      <li><%= link_to 'フリマ利用規約', '#' %></li>
+      <li><%= link_to '特定商取引に関する表記', '#' %></li>
     </ul>
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
     <p class="inc">
