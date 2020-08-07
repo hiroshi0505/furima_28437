@@ -55,11 +55,6 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Category can't be blank")
         end
-        it "categoryが空だと登録できない" do
-          @item.category_id = nil
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Category is not a number")
-        end
         it "categoryの選択が[--]だと登録できない" do
           @item.category_id = '1'
           @item.valid?
@@ -70,11 +65,6 @@ RSpec.describe Item, type: :model do
           @item.status_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Status can't be blank")
-        end
-        it "statusが空だと登録できない" do
-          @item.status_id = nil
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Status is not a number")
         end
         it "statusの選択が[--]だと登録できない" do
           @item.status_id = '1'
@@ -87,11 +77,6 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
         end
-        it "delivery_feeが空だと登録できない" do
-          @item.delivery_fee_id = nil
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery fee is not a number")
-        end
         it "delivery_feeの選択が[--]だと登録できない" do
           @item.delivery_fee_id = '1'
           @item.valid?
@@ -103,11 +88,6 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Region can't be blank")
         end
-        it "regionが空だと登録できない" do
-          @item.region_id = nil
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Region is not a number")
-        end
         it "regionの選択が[--]だと登録できない" do
           @item.region_id = '0'
           @item.valid?
@@ -118,11 +98,6 @@ RSpec.describe Item, type: :model do
           @item.delivery_date_id = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery date can't be blank")
-        end
-        it "delivery_dateが空だと登録できない" do
-          @item.delivery_date_id = nil
-          @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery date is not a number")
         end
         it "delivery_dateの選択が[--]だと登録できない" do
           @item.delivery_date_id = '1'
