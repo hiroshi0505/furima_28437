@@ -3,7 +3,7 @@
 ## users テーブル
 
 | Column         | Type   | Options     |
-| ----------     | ------ | ----------- |
+|----------------|--------|-------------|
 | nickname       | string | null: false |
 | first_name     | string | null: false |
 | last_name      | string | null: false |
@@ -20,7 +20,7 @@
 ## items テーブル
 
 | Column           | Type    | Options     |
-| ---------------  | ------  | ----------- |
+|------------------|---------|-------------|
 | name             | string  | null: false |
 | explanation      | text    | null: false |
 | category_id      | integer | null: false |
@@ -40,7 +40,7 @@
 ## item_purchases テーブル
 
 | Column    | Type    | Options     |
-| --------- | ------  | ----------- |
+|-----------|---------|-------------|
 | item_id   | integer | null: false |
 | user_id   | integer | null: false |
 
@@ -51,7 +51,7 @@
 ## address テーブル
 
 | Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
+|---------------|---------|-------------|
 | postal_code   | string  | null: false |
 | region_id     | integer | null: false |
 | city          | string  | null: false |

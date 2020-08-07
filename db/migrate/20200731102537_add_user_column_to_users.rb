@@ -5,8 +5,8 @@ class AddUserColumnToUsers < ActiveRecord::Migration[6.0]
     add_column :users, :last_name, :string
     add_column :users, :first_furigana, :string
     add_column :users, :last_furigana, :string
-    # add_column :users, :email, :string
     add_column :users, :password, :string
     add_column :users, :birthday, :date
+    # add_column :users, :email, :string
   end
 end
