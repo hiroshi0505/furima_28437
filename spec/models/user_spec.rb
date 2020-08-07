@@ -6,7 +6,7 @@ describe User do
 
   describe 'ユーザー新規登録' do
     context '新規登録がうまくいくとき' do
-      it "nickname、email、passwordとpassword_confirmation、first_name、last_name、first_furigana、last_furigana、birthdayが存在すれば登録できる" do
+      it "全ての項目が存在すれば登録できる" do
         expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
@@ -33,7 +33,7 @@ describe User do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
       it "emailに@が含まれていないと登録ができない" do
-        @user.email = 'aaa'
+        @user.email = '1'
         @user.valid?
         expect(@user.errors.full_messages).to include("Email is invalid")
       end
@@ -48,7 +48,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it "passwordに英字と数字が混在していないと登録できない" do
-        @user.password = "11111"
+        @user.password = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
