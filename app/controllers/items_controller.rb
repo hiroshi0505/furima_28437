@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
 
   before_action :move_to_index, only: :new
+  before_action :set_item, only:[:show, :edit, :update]
   
-  def index  # Top Pageに行く
+  def index  # Top Pageを表示
     @items = Item.all.order("created_at DESC")
   end
 
@@ -19,11 +20,26 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show # 商品詳細ページに行く
-    @item = Item.find(params[:id])
+  def show # 詳細ページに行く
+  end
+
+  def edit # 編集ページに行く
+  end
+
+  def update # 更新アクション
+    @item.update(item_params)
+    if @item.save
+      redirect_to action: :show
+    else
+      render action: :edit
+    end
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def move_to_index
     unless user_signed_in?
