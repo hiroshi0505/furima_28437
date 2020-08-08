@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: :new
   
   def index  # Top Pageに行く
+    @items = Item.all.order("created_at DESC")
   end
 
   def new  # 出品ページに行く
