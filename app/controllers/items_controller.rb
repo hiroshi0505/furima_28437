@@ -19,6 +19,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show # 商品詳細ページに行く
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def move_to_index
