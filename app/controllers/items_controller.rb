@@ -16,8 +16,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      # render :new # アクション名を指定し、items/new.html.erbにページを戻す。
-      render new_item_path # prefixを指定
+      render :new # アクション名を指定し、items/new.html.erbにページを戻す。
+      # render new_item_path # prefixを指定
     end
   end
 
@@ -33,8 +33,8 @@ class ItemsController < ApplicationController
       # redirect_to action: :show # アクション名を指定
       redirect_to item_path # prefixを指定
     else
-      # render action: :edit # アクション名を指定
-      render edit_item_path # prefixを指定
+      render action: :edit # アクション名を指定
+      # render edit_item_path # prefixを指定
     end
   end
 
