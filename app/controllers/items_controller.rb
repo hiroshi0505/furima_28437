@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :move_to_index, only: :new
-  before_action :set_item, only:[:show, :edit, :update]
+  before_action :set_item, only:[:show, :edit, :update, :destroy]
   
   def index  # Top Pageを表示
     @items = Item.all.order("created_at DESC")
@@ -36,6 +36,15 @@ class ItemsController < ApplicationController
       render action: :edit # アクション名を指定
       # render edit_item_path # prefixを指定
     end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render action: :show
+    end
+
   end
 
   private
