@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user! # ログインしていないユーザーをサインアップの画面に促す
+  before_action :authenticate_user!, only: :new # 未ログインユーザーをログイン画面に遷移させる（only:出品アクションのみ）
   before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
 
