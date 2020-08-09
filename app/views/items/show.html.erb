@@ -10,9 +10,9 @@
       <%= image_tag @item.image ,class:"item-box-img" %>
 
       <% if @item.item_purchase != nil %>
-          <div class='sold-out'>
-            <span>Sold Out!!</span>
-          </div>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
       <% end %>
 
     </div>
@@ -25,20 +25,13 @@
       </span>
     </div>
 
-    <%# ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
     <% if user_signed_in? && current_user.id == @item.user_id %>
-    
-    <%= link_to '商品の編集', "#", method: :get, class: "item-red-btn" %>
-    <p class='or-text'>or</p>
-    <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
+      <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
     <% else %>
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
+      <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
     <% end %>
-    <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
 
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>
@@ -99,8 +92,12 @@
     </form>
   </div>
   <div class="links">
-    <%# <%= link_to '＜ 前の商品', '#' class="change-item-btn"%>
-    <%# <%= link_to '後ろの商品 ＞', '#' class="change-item-btn"%>
+    <a href="#" class="change-item-btn">
+      ＜ 前の商品
+    </a>
+    <a href="#" class="change-item-btn">
+      後の商品 ＞
+    </a>
   </div>
   <a href="#" class='another-item'><%= "商品のカテゴリー名" %>をもっと見る</a>
 </div>
