@@ -33,8 +33,8 @@
 | image            | string  | null: false |
 
 ### Association
-- belongs_to :users
-- has_one :item_purchases
+- belongs_to :user
+- has_one :item_purchase
 - has_one :address
 
 ## item_purchases テーブル
@@ -45,8 +45,8 @@
 | user_id   | integer | null: false |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 ## address テーブル
 
@@ -61,4 +61,4 @@
 | item_id       | integer | null: false |
 
 ### Association
-- belongs_to :items
+- belongs_to :item

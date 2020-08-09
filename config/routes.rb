@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # root -> ルートパス(localhost:3000)にアクセスした場合に割り当てられる設定
   root to: 'items#index'
-  resources :items
-  resources :item_purchase
+  resources :items do
+    resources :item_purchases, only:[:create]
+  end
 end
