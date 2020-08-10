@@ -10,6 +10,7 @@ class User < ApplicationRecord
   VALID_KANZIKANA_REGEX = /\A[ぁ-んァ-ン一-龥]/
   VALID_FURIGANA_REGEX = /\A[ァ-ヶー－]+\z/
 
+  # do~endの全てのバリデーションに “presence true” を付ける
   with_options presence: true do
     validates :nickname, :birthday
     validates :password, format: { with: VALID_EISUZI_REGEX, message: "Include both letters and numbers"}
