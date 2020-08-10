@@ -46,6 +46,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase #自作の購入アクション
+    @item = Item.find(params[:id]) # Itemモデルのparamsに含まれているidを、@itemに代入します
+  end
+
+
   private
 
   def set_item

@@ -11,6 +11,6 @@ FactoryBot.define do
     
     association :user
     # association :address
-    # association :item_purchases
+    # association :item_purchase
   end
 end
