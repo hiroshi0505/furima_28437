@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   
+  before_action :move_to_index, only:[:index, :create, :pay_item]
   before_action :set_item, only:[:index, :create, :pay_item]
   
   def index # 購入ページ
@@ -44,4 +45,10 @@ class PurchasesController < ApplicationController
     )
   end
 
+  def move_to_index # 未ログイン状態のユーザーを転送
+    unless user_signed_in?
+      redirect_to new_user_session_path # prefixを指定
+    # redirect_to '/users/sign_in'      # URI Patternを指定
+    end
+  end
 end
