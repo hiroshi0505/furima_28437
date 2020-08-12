@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
-  has_many :item_purchases
+  has_many :purchases
 
   VALID_EISUZI_REGEX = /\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}\z/
   VALID_KANZIKANA_REGEX = /\A[ぁ-んァ-ン一-龥]/

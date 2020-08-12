@@ -1,9 +1,0 @@
-class ItemPurchase < ApplicationRecord
-  belongs_to :user
-  belongs_to :item
-
-  with_options presence: true do
-    validates :user_id, :item_id
-  end
-
-end

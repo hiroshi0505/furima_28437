@@ -119,15 +119,14 @@
     </ul>
   </div>
   <%# //FURIMAの特徴 %>
-
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-        <% @items.each do |item| %>
-          <%= render partial: "item", locals: { item: item } %>
-        <% end %>
+      <% @items.each do |item| %>
+        <%= render partial: "item", locals: { item: item } %>
+      <% end %>
     </ul>
   </div>
   <%# //商品一覧 %>
