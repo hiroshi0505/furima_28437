@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :items
-- has_many :item_purchases
+- has_many :purchases
 
 ## items テーブル
 
@@ -33,11 +33,11 @@
 | image            | string  | null: false |
 
 ### Association
-- belongs_to :users
-- has_one :item_purchases
+- belongs_to :user
+- has_one :purchase
 - has_one :address
 
-## item_purchases テーブル
+## purchases テーブル
 
 | Column    | Type    | Options     |
 |-----------|---------|-------------|
@@ -45,8 +45,8 @@
 | user_id   | integer | null: false |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
 ## address テーブル
 
@@ -59,6 +59,7 @@
 | building_name | string  |             |
 | phone_number  | string  | null: false |
 | item_id       | integer | null: false |
+| user_id       | integer | null: false |
 
 ### Association
-- belongs_to :items
+- belongs_to :item
