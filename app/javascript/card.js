@@ -45,8 +45,8 @@ const pay = () => {
       }
       // 変数に代入された情報が正常で無い場合
       else {
-        charge-form.disabled = false;
         alert('「必須」項目箇所を正しく入力して下さい');
+        form.prop("disabled" ,false);
       }
     });
   });

@@ -24,8 +24,11 @@
         (税込) 送料込み
       </span>
     </div>
-
-    <% if user_signed_in? && current_user.id == @item.user_id %>
+    <%# 商品が売れた時 %>
+    <% if @item.purchase != nil %>
+    <%# 商品が売れ残っている時 %>
+    <%# サインインしていて出品している時 %>
+    <% elsif user_signed_in? && current_user.id == @item.user_id %>
       <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
       <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
@@ -34,7 +37,6 @@
     <% else %>
       <%= link_to '購入画面に進む', new_user_session_path, method: :get, class:"item-red-btn"%>
     <% end %>
-
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>
     </div>
