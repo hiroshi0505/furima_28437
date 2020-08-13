@@ -38,6 +38,12 @@ RSpec.describe PurchaseAddress, type: :model do
           expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
         end
 
+        it "postal_codeに[-]がないと商品購入できない" do
+          @purchase_address.postal_code = "1234567"
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
+        end
+
         it "regionが空だと商品購入できない" do
           @purchase_address.region_id = nil
           @purchase_address.valid?
@@ -64,6 +70,12 @@ RSpec.describe PurchaseAddress, type: :model do
 
         it "phone_numberが空だと商品購入できない" do
           @purchase_address.phone_number = nil
+          @purchase_address.valid?
+          expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
+        end
+
+        it "phone_numberが11桁以内でないと商品購入できない" do
+          @purchase_address.phone_number = "123456789012"
           @purchase_address.valid?
           expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
         end
