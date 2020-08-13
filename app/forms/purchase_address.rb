@@ -4,8 +4,9 @@ class PurchaseAddress
   attr_accessor :postal_code, :region_id, :city, :street_number, :building_name, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do  # do~endの全てのカラムに対し、空の選択を保存できないようにする
-    validates :region_id, :city, :street_number, :phone_number
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :city, :street_number
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "can't be blank"}
+    validates :phone_number, format: {with: /\A[0-9]{11}\z/, message: "can't be blank"}
     validates :region_id, numericality: { other_than: 0, message: "can't be blank" } # 都道府県はid=0が「--」の為
   end
 

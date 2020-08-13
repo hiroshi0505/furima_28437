@@ -23,7 +23,7 @@ const pay = () => {
     // トークン生成コード
     Payjp.createToken(card, (status, response) => {
       console.log(response)
-      // 変数に代入された情報が正常であれば、26行目で生成されたトークンを変数に代入します。
+      // 変数に代入された情報が正常であれば、28行目で生成されたトークンを変数に代入します。
       if (status === 200) {
         const token = response.id;
         // 生成する要素を取得
@@ -45,6 +45,8 @@ const pay = () => {
       }
       // 変数に代入された情報が正常で無い場合
       else {
+        charge-form.disabled = false;
+        alert('「必須」項目箇所を正しく入力して下さい');
       }
     });
   });

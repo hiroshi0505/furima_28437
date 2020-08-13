@@ -3,16 +3,16 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: :new
   before_action :set_item, only:[:show, :edit, :update, :destroy]
   
-  def index  # Top Pageを表示
-    @items = Item.all.order("created_at DESC") # 出品商品を降順に並べる
+  def index  # Top Pageを表示。@itemsというインスタンス変数に、itemsテーブルのレコードを全て代入
+    @items = Item.all.order("created_at DESC") # 降順に並べる
   end
 
-  def new  # 出品ページに行く
+  def new  # 出品ページに行く。Itemクラスのインスタンス変数を生成します。
     @item = Item.new # 値が空のItemインスタンスを生成し、@itemに代入
   end
 
   def create  # 出品商品をitemsテーブルに保存
-    @item = Item.new(item_params) # ストロングパラメーター
+    @item = Item.new(item_params) # ストロングパラメーターで、具体的に保存する事柄を指定
     if @item.save
       redirect_to root_path
     else
@@ -48,8 +48,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def set_item
-    @item = Item.find(params[:id]) # Itemモデルのparamsに含まれているidを、@itemに代入
+  def set_item # methodの名前は自由でok
+    @item = Item.find(params[:id]) # Itemモデルのparamsに含まれているidを取得し、@itemに代入
   end
 
   def move_to_index # 未ログイン状態のユーザーを転送
@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  def item_params # ストロングパラメーター（itemモデル）
+  def item_params # ストロングパラメーター（itemモデル）。2つのハッシュを統合するときに使うmergeメソッド。ログイン中のユーザーが持つidを取得するcurrent_userメソッド
     params.require(:item).permit(:image, :name, :explanation, :category_id, :delivery_date_id, :delivery_fee_id, :region_id, :status_id, :price ).merge(user_id: current_user.id)
   end
 
