@@ -6,15 +6,15 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
-  VALID_EISUZI_REGEX = /\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}\z/
-  VALID_KANZIKANA_REGEX = /\A[ぁ-んァ-ン一-龥]/
-  VALID_FURIGANA_REGEX = /\A[ァ-ヶー－]+\z/
+  PASSWORD_REGEX = /\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}\z/
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  FURIGANA_REGEX = /\A[ァ-ヶー－]+\z/
 
   # do~endの全てのバリデーションに “presence true” を付ける
   with_options presence: true do
     validates :nickname, :birthday
-    validates :password, format: { with: VALID_EISUZI_REGEX, message: "Include both letters and numbers"}
-    validates :first_name, :last_name, format: { with: VALID_KANZIKANA_REGEX, message: "Full-width characters"}
-    validates :first_furigana, :last_furigana, format: { with: VALID_FURIGANA_REGEX, message: "Full-width katakana characters"}
+    validates :password, format: { with: PASSWORD_REGEX, message: "Include both letters and numbers"}
+    validates :first_name, :last_name, format: { with: NAME_REGEX, message: "Full-width characters"}
+    validates :first_furigana, :last_furigana, format: { with: FURIGANA_REGEX, message: "Full-width katakana characters"}
   end
 end

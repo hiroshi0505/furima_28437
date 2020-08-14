@@ -10,6 +10,8 @@ describe User do
         expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
+        @user.password = 'a12345'
+        @user.valid?
         expect(@user).to be_valid
       end
     end
@@ -48,14 +50,19 @@ describe User do
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
       it "passwordに英字と数字が混在していないと登録できない" do
-        @user.password = ""
+        @user.password = "1234567"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
       end
       it "passwordが存在してもpassword_confirmationが空では登録できない" do
-        @user.password_confirmation = ''
+        @user.password_confirmation = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+      it "passwordが存在してもpassword_confirmationが空では登録できない" do
+        @user.password_confirmation = nil
+        @user.valid?
+        expect(@user.errors.full_messages).to include()
       end
       it "first_nameが空だと登録できない" do
         @user.first_name = ''
