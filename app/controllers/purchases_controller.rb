@@ -4,22 +4,21 @@ class PurchasesController < ApplicationController
   before_action :go_to_index, only: :index
   
   def index # 購入ページ
-    @purchase = PurchaseAddress.new # 値が空のItemインスタンスを生成し、@purchaseに代入
-    if current_user.id == @item.user_id
+    @purchase = PurchaseAddress.new # 値が空のPurchaseAddressインスタンスを生成し、インスタンス変数@purchaseに代入
+    if current_user.id == @item.user_id # 出品者本人が購入ページに行くことができないようにトップページに戻す
       redirect_to items_path
     end
   end
 
-  def create # 購入アクション(購入するボタンを押した際のアクション)
-    # この@purchaseの中に購入金額とカード情報（token）が入っています。
+  def create # 購入するボタンを押した際のアクション
+    # @purchaseの中に購入金額とカード情報（token）が入っています。
     @purchase = PurchaseAddress.new(purchase_params)
     # binding.pry
-    # @orderの値が正常にDBに保存できるかどうかを確認
+    # @purchaseの値が正常にDBに保存できるかどうかを確認
     if @purchase.valid?
       # もしtrueが返されたら「pay_item」が起動します。
       pay_item
-      @purchase.save
-      # 保存（購入）後は、TopPageにリダイレクトする
+      @purchase.save # 保存（購入）後は、TopPageにリダイレクトする
       return redirect_to root_path
     else
       # falseが返されたら再度indexアクションが起動します。
@@ -33,6 +32,7 @@ class PurchasesController < ApplicationController
     params.require(:purchase_address).permit(:postal_code, :region_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: @item.id)
   end
 
+  # これ必要？？？
   def set_item # methodの名前は自由でok
     @item = Item.find(params[:item_id]) # Itemモデルのparamsに含まれているidを、@itemに代入します
   end
@@ -48,8 +48,8 @@ class PurchasesController < ApplicationController
     )
   end
 
-  def go_to_index
-    if @item.purchase != nil
+  def go_to_index # methodの名前は自由でok
+    if @item.purchase != nil # もし商品が売れている場合トップページに戻す
       redirect_to items_path
     end
   end

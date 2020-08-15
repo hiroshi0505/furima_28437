@@ -45,6 +45,9 @@ const pay = () => {
       }
       // 変数に代入された情報が正常で無い場合
       else {
+        // disabled(無効の意味) = true で設定
+        // disabled(無効の意味) = false で解除
+        // 6行目のform = submitが押すイベントに対し、disabled設定を解除する
         form.prop("disabled" ,false);
       }
     });
