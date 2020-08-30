@@ -7,7 +7,7 @@ class PurchaseAddress
   PHONE_NUMBER_REGEX = /\A[0-9]{11}\z/
 
   with_options presence: true do  # do~endの全てのカラムに対し、空の選択を保存できないようにする
-    validates :city, :street_number
+    validates :city, :street_number, :token
     validates :postal_code, format: {with: POSTAL_CODE_REGEX, message: "は「000-0000」のように入力して下さい"}
     validates :phone_number, format: {with: PHONE_NUMBER_REGEX, message: "はハイフン無しの11桁で入力して下さい"}
     validates :region_id, numericality: { other_than: 0, message: "は「--」以外を選択して下さい" } # 都道府県はid=0が「--」の為
